@@ -23,6 +23,7 @@ public enum Colour
   Yellow(16);
 
   private final int colourCode;
+  private final static int MagicNumber = 812800;
 
   Colour(int colourCode)
   {
@@ -31,6 +32,10 @@ public enum Colour
 
   public static Colour fromCode(int colourCode) {
     return Colour.values()[colourCode];
+  }
+
+  public static Colour fromCustomModelData(int customModelData) {
+    return Colour.values()[customModelData - MagicNumber];
   }
 
   public Material getDye()
@@ -61,25 +66,17 @@ public enum Colour
 
   public int getCustemModelData()
   {
-    return 812800 + colourCode;
+    return MagicNumber + colourCode;
   }
 
-/*
-Black Dye	black_dye
- Red Dye	red_dye
- Green Dye	green_dye
- Brown Dye	brown_dye
- Blue Dye	blue_dye
- Purple Dye	purple_dye
- Cyan Dye	cyan_dye
- Light Gray Dye	light_gray_dye
- Gray Dye	gray_dye
- Pink Dye	pink_dye
- Lime Dye	lime_dye
- Yellow Dye	yellow_dye
- Light Blue Dye	light_blue_dye
- Magenta Dye	magenta_dye
- Orange Dye	orange_dye
- White Dye	white_dye
- */
+  public String humanReadableName()
+  {
+    if(this == LightBlue) {
+      return "Light Blue";
+    }
+    if(this == LightGray) {
+      return "Light Gray";
+    }
+    return this.toString();
+  }
 }
