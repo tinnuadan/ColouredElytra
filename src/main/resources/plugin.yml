@@ -1,5 +1,6 @@
-main: net.tinnuadan.colouredelytra.ColouredElytra;
+main: net.tinnuadan.colouredelytra.ColouredElytra
 name: ColouredElytra
 version: 0.1
 author: tinnuadan@gmail.com
 description: Coloured Elytra, only works with optifine
+api-version: 1.16
