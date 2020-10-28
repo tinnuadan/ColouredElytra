@@ -29,7 +29,11 @@ public enum Colour
     this.colourCode = colourCode;
   }
 
-  Material getDye()
+  public static Colour fromCode(int colourCode) {
+    return Colour.values()[colourCode];
+  }
+
+  public Material getDye()
   {
     switch (this) {
       case Black: return Material.BLACK_DYE;
@@ -55,7 +59,7 @@ public enum Colour
     return Material.WATER;
   }
 
-  int getCustemModelData()
+  public int getCustemModelData()
   {
     return 812800 + colourCode;
   }

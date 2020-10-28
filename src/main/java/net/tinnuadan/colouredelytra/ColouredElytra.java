@@ -1,10 +1,13 @@
 package net.tinnuadan.colouredelytra;
 
+import net.tinnuadan.colouredelytra.event.PlayerClickListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ColouredElytra extends JavaPlugin
 {
+  private PlayerClickListener playerClickListener;
+
   @Override
   public void onEnable() {
     Bukkit.addRecipe(Recipe.createRecipe(this, Colour.Black));
@@ -23,6 +26,10 @@ public class ColouredElytra extends JavaPlugin
     Bukkit.addRecipe(Recipe.createRecipe(this, Colour.Red));
     Bukkit.addRecipe(Recipe.createRecipe(this, Colour.White));
     Bukkit.addRecipe(Recipe.createRecipe(this, Colour.Yellow));
+
+    playerClickListener = new PlayerClickListener();
+    getServer().getPluginManager().registerEvents(playerClickListener, this);
+
     getLogger().info("Custom Elytra Recipes added");
   }
 }
