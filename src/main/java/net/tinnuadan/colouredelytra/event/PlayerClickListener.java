@@ -59,6 +59,7 @@ public class PlayerClickListener implements Listener
 
     //coloured elytra found
     cauldronData.setLevel(cauldronData.getLevel()-1);
+    clickedBlock.setBlockData(cauldronData);
     meta.setCustomModelData(null);
     item.setItemMeta(meta);
     equipment.setItemInMainHand(item);
