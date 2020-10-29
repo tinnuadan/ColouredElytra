@@ -1,6 +1,8 @@
 package net.tinnuadan.colouredelytra.event;
 
 import net.tinnuadan.colouredelytra.Colour;
+import net.tinnuadan.colouredelytra.ColouredElytra;
+import net.tinnuadan.colouredelytra.RecipeManager;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -24,7 +26,7 @@ public class PlayerClickListener implements Listener
       return;
     }
     Block clickedBlock = event.getClickedBlock();
-    if(clickedBlock.getType() != Material.CAULDRON) {
+    if(clickedBlock == null || clickedBlock.getType() != Material.CAULDRON) {
       return;
     }
     Levelled cauldronData = (Levelled) clickedBlock.getBlockData();
@@ -60,9 +62,10 @@ public class PlayerClickListener implements Listener
     //coloured elytra found
     cauldronData.setLevel(cauldronData.getLevel()-1);
     clickedBlock.setBlockData(cauldronData);
-    meta.setCustomModelData(null);
-    item.setItemMeta(meta);
-    equipment.setItemInMainHand(item);
+//    meta.setCustomModelData(null);
+//    item.setItemMeta(meta);
+    ColouredElytra.recipeManager.alterItem(item, null, RecipeManager.AlteringSource.Cauldron);
+//    equipment.setItemInMainHand(item);
     event.setCancelled(true);
   }
 }

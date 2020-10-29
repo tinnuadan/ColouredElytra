@@ -1,5 +1,6 @@
 package net.tinnuadan.colouredelytra;
 
+import jdk.internal.jline.internal.Nullable;
 import org.bukkit.Material;
 
 public enum Colour
@@ -34,7 +35,10 @@ public enum Colour
     return Colour.values()[colourCode];
   }
 
-  public static Colour fromCustomModelData(int customModelData) {
+  public static Colour fromCustomModelData(@Nullable Integer customModelData) {
+    if(customModelData == null) {
+      return Colour.None;
+    }
     return Colour.values()[customModelData - MagicNumber];
   }
 
@@ -64,8 +68,11 @@ public enum Colour
     return Material.WATER;
   }
 
-  public int getCustemModelData()
+  public Integer getCustemModelData()
   {
+    if(this == Colour.None) {
+      return null;
+    }
     return MagicNumber + colourCode;
   }
 
