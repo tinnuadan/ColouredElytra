@@ -1,7 +1,7 @@
 package net.tinnuadan.colouredelytra;
 
-import jdk.internal.jline.internal.Nullable;
 import org.bukkit.Material;
+import org.jetbrains.annotations.Nullable;
 
 public enum Colour
 {
